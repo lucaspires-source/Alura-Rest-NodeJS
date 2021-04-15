@@ -10,8 +10,7 @@ module.exports = (caminho, nomeDoArquivo, callbackImagemCriada) => {
       .pipe(fs.createWriteStream(novoCaminho))
       .on("finish", () => callbackImagemCriada(false, novoCaminho));
   } else {
-
-      const erro = "Tipo inválido";
-      callbackImagemCriada(erro);
+    const erro = "Tipo inválido";
+    callbackImagemCriada(erro);
   }
 };
