@@ -14,8 +14,13 @@ app.get('/atendimentos/:id', (req, res) => {
 
   app.post("/atendimentos", (req, res) => {
      const atendimento = req.body
-     Atendimento.adiciona(atendimento,res)
-      
+     Atendimento.adiciona(atendimento)
+        .then(atendimentoCadastrado =>{
+          res.status(201).json(atendimentoCadastrado)
+        })
+        .catch(erros =>{
+          res.status(400).json(erros)
+        })
   });
 
   app.patch('/atendimentos/:id', (req, res) => {
